@@ -1,0 +1,148 @@
+UVM Report Summaries for All Tests
+
+============================================
+
+Test: linkspeed_done_vs_phyretrain_test
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO : 1123
+# UVM_WARNING :    0
+# UVM_ERROR :   42
+# UVM_FATAL :    0
+
+
+--------------------------------------------
+
+Test: linkspeed_done_vs_repair_test
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO : 1148
+# UVM_WARNING :    0
+# UVM_ERROR :   44
+# UVM_FATAL :    0
+
+
+--------------------------------------------
+
+Test: linkspeed_done_vs_speed_degrade_test
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO : 1127
+# UVM_WARNING :    0
+# UVM_ERROR :   41
+# UVM_FATAL :    0
+
+
+--------------------------------------------
+
+Test: linkspeed_repair_vs_done_test
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO : 1152
+# UVM_WARNING :    0
+# UVM_ERROR :   44
+# UVM_FATAL :    0
+
+
+--------------------------------------------
+
+Test: linkspeed_repair_vs_phyretrain_test
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO : 1153
+# UVM_WARNING :    0
+# UVM_ERROR :   46
+# UVM_FATAL :    0
+
+
+--------------------------------------------
+
+Test: linkspeed_repair_vs_repair_test
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO : 1109
+# UVM_WARNING :    0
+# UVM_ERROR :    1
+# UVM_FATAL :    0
+
+
+--------------------------------------------
+
+Test: linkspeed_repair_vs_speed_degrade_test
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO : 1130
+# UVM_WARNING :    0
+# UVM_ERROR :   41
+# UVM_FATAL :    0
+
+
+--------------------------------------------
+
+Test: linkspeed_speed_degrade_vs_done_test
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO : 1090
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+
+
+--------------------------------------------
+
+Test: linkspeed_speed_degrade_vs_phyretrain_test
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO : 1174
+# UVM_WARNING :    0
+# UVM_ERROR :   85
+# UVM_FATAL :    0
+
+
+--------------------------------------------
+
+Test: linkspeed_speed_degrade_vs_repair_test
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO : 1092
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+
+
+--------------------------------------------
+
+Test: linkspeed_speed_degrade_vs_speed_degrade_test
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO : 1132
+# UVM_WARNING :    0
+# UVM_ERROR :   42
+# UVM_FATAL :    0
+
+
+--------------------------------------------
+
+Test: PHY_test
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :  719
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+
+
+--------------------------------------------
+
