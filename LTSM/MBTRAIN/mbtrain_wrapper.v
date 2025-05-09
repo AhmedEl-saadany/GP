@@ -19,7 +19,7 @@ module mbtrain_wrapper (
 		    input        i_valid_framing_error,
 		// communicating with ltsm (new)
 			input [1:0]  i_phyretrain_resolved_state,
-			input 		 i_coming_from_L1,
+			input 	     i_coming_from_L1,
 		//inputs from mbinit (new)
 			input [2:0] i_highest_common_speed,
 			input       i_first_8_tx_lanes_are_functional_mbinit , i_second_8_tx_lanes_are_functional_mbinit,
@@ -157,7 +157,8 @@ module mbtrain_wrapper (
 //point teset enables 
 	assign o_rx_pt_en   =o_pt_en_vref_cal ;
 	assign o_tx_pt_en   =o_pt_en_linkspeed || o_pt_en_train_center_cal;
-	assign o_tx_mainband_or_valtrain_test = o_tx_mainband_or_valtrain_test_linkspeed || o_tx_mainband_or_valtrain_test_train_center_cal ;
+	// assign o_tx_mainband_or_valtrain_test = o_tx_mainband_or_valtrain_test_linkspeed || o_tx_mainband_or_valtrain_test_train_center_cal ;
+	assign o_tx_mainband_or_valtrain_test = o_mainband_or_valtrain_test_controller;
 // self cal enable 
 	assign i_en_selfcal = o_speed_idle_en || o_tx_self_cal_en;
 //vref cal enable 
@@ -285,6 +286,7 @@ rx_cal_wrapper rx_cal_wrapper_inst( //done
 			.i_en(o_repair_en), 
 		//communicating with sideband 
 		    .i_sideband_message(i_sideband_message),
+			.i_sideband_valid(i_sideband_valid),
 		    .i_busy(i_busy),
 			.i_falling_edge_busy(i_falling_edge_busy),
 			.i_sideband_data_lanes_encoding(i_sideband_data_lanes_encoding),
@@ -357,6 +359,7 @@ mbtrain_controller mbtrain_controller_inst(
 	    	.i_en(i_en), 
 	    //input signal from phyretrain after resolving 
 		    .i_phyretrain_resolved_state(i_phyretrain_resolved_state), 
+			.i_coming_from_L1(i_coming_from_L1),
 	    //input signal from mbinit 
 		    .i_highest_common_speed(i_highest_common_speed),
 		    .i_first_8_tx_lanes_are_functional_mbinit(i_first_8_tx_lanes_are_functional_mbinit)  ,
@@ -373,7 +376,6 @@ mbtrain_controller mbtrain_controller_inst(
 			.i_error_req_was_sent_or_received(o_error_req_was_sent_or_received), 
 			.i_speed_degrade_req_was_sent_or_received(o_speed_degrade_req_was_sent_or_received),
 			.i_repair_req_was_sent_or_received(o_repair_req_was_sent_or_received),
-			.i_coming_from_L1(i_coming_from_L1),
 	    //enable for each substate 
 	    	.i_valvref_ack(o_test_ack_vref_cal)                            , .i_data_vref_ack(o_test_ack_vref_cal)        ,
 	    	.i_speed_idle_ack(o_test_ack_selfcal)                      , .i_tx_self_cal_ack(o_test_ack_selfcal)   ,

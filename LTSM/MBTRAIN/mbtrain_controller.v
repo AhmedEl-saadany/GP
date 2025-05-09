@@ -17,11 +17,11 @@ module mbtrain_controller (
 	    //next state flags
 		input	i_phy_retrain_req_was_sent_or_received,   i_error_req_was_sent_or_received, 
 			    i_speed_degrade_req_was_sent_or_received, i_repair_req_was_sent_or_received,
-				i_coming_from_L1,
 	    //enable for each substate 
 	    input  i_valvref_ack             ,i_data_vref_ack        , i_speed_idle_ack             , i_tx_self_cal_ack   ,
 		input  i_rx_clk_cal_ack          ,i_val_train_center_ack , i_val_train_vref_ack         , i_data_train_center_1_ack   ,
 		input  i_data_train_vref_ack     ,i_rx_deskew_ack        , i_data_train_center_2_ack    , i_link_speed_ack ,i_repair_ack ,
+		input  i_coming_from_L1,
     //outputs 
 	    //enable for each substate 
 	    output reg  o_valvref_en            ,o_data_vref_en        , o_speed_idle_en             , o_tx_self_cal_en   ,
@@ -103,7 +103,7 @@ always @(*) begin
         IDLE:begin
         	if(i_en) begin
         		if(i_coming_from_L1) 
-        			ns=SPEED_IDLE
+        			ns=SPEED_IDLE;
         		else 
 	        		case (i_phyretrain_resolved_state)
 	        			2'b00:ns=VALVREF;
@@ -323,6 +323,7 @@ always @(posedge clk or negedge rst_n) begin : proc_output
 				o_data_train_center_1_en     <=0;
 				o_data_train_vref_en         <=0;
 				o_rx_deskew_en               <=0;
+				o_phyretrain_en              <=0;
 				o_data_train_center_2_en     <=0;
 				o_link_speed_en              <=0;
 				o_repair_en                  <=0;
@@ -549,7 +550,7 @@ always @(posedge clk or negedge rst_n) begin : proc_
 		o_second_8_tx_lanes_are_functional <=i_second_8_tx_lanes_are_functional_mbinit;
 		o_first_8_rx_lanes_are_functional  <=i_first_8_rx_lanes_are_functional_mbinit;
 		o_second_8_rx_lanes_are_functional <=i_second_8_rx_lanes_are_functional_mbinit;
-	end else if(cs==LINKSPEED && ns!=LINKSPEED) begin 
+	end else if(cs==LINKSPEED && ns!=LINKSPEED && (i_first_8_tx_lanes_are_functional_linkspeed || i_second_8_tx_lanes_are_functional_linkspeed)) begin 
 		//in here we decide the tx results as we know it after the point test results so we know now the functional
 		//lanes that we can send data on them and this result will no be changed after repair as in the repair i am only 
 		//telling the remote partner which lanse will i send data on  
