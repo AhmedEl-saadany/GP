@@ -112,6 +112,7 @@ reg  clear_resolved_state; // to PHYRETRAIN so that it reset the o_resolved_stat
 wire falling_edge_busy;
 reg valid_framing_error_reg;
 reg go_to_speedidle; // from LTSM to MBTRAIN.speedidle upon exit from L1 state
+reg partner_req_trainerror; // register when remote partner req trainerror so that RX_TRAINERROR_HS block can send responce
 
 /**************************************************
 * MBINIT Internal signals
@@ -204,7 +205,6 @@ wire sync_lp_linkerror;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////// INSTANTIATIONS ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 /****************************************
 * SBINIT
 ****************************************/
@@ -222,7 +222,6 @@ SBINIT_WRAPPER #(SB_MSG_WIDTH) SBINIT_inst (
     .o_tx_msg_valid             (msg_valid_SBINIT),
 	.o_SBINIT_end       	    (SBINIT_DONE)
 );
-
 /****************************************
 * MBINIT
 ****************************************/
@@ -318,7 +317,6 @@ mbtrain_wrapper MBTRAIN_inst (
     .o_curret_operating_speed                   (o_curret_operating_speed),
     .o_mbtrain_ack                              (MBTRAIN_DONE)             
 );
-
 /****************************************
 * TRAINERROR
 ****************************************/
@@ -329,12 +327,12 @@ TRAINERROR_HS_WRAPPER #(SB_MSG_WIDTH) TRAINERROR_inst (
     .i_rx_msg_valid             (i_rx_msg_valid),
     .i_SB_Busy                  (i_busy),
     .i_falling_edge_busy        (falling_edge_busy),
-	.i_decoded_SB_msg           (i_decoded_SB_msg),
+    .i_partner_req_trainerror   (partner_req_trainerror), // Edit since if the partner requsted trainerror and the LTSM_TOP knows and enabled TRAINERROR_HS block,
+	.i_decoded_SB_msg           (i_decoded_SB_msg),       // the RX block will not send the responce since it didnt see the i_rx_msg_valid so the LTSM should direct it
 	.o_encoded_SB_msg           (encoded_SB_msg_TRAINERROR),
     .o_tx_msg_valid             (msg_valid_TRAINERROR),
 	.o_TRAINERROR_HS_end        (TRAINERROR_DONE)
 );
-
 /****************************************
 * PHYRETRAIN
 ****************************************/
@@ -374,8 +372,6 @@ bit_synchronizer lp_linkerror_synchronizer (
     .i_data_in  (i_lp_linkerror),
     .o_data_out (sync_lp_linkerror)
 );
-
-
 /////////////////////////////////////////
 //////////// Machine STATES /////////////
 /////////////////////////////////////////
@@ -400,22 +396,10 @@ assign o_tx_state = CS;
 assign o_mapper_demapper_en = (CS == ACTIVE);
 assign o_falling_edge_busy  = falling_edge_busy;
 assign o_ltsm_in_reset = ~|CS;
-//wire counter_reset_flag     = (reset_counter == COUNT_4ms+1);
-wire trainerror_condition   = (i_time_out || i_decoded_SB_msg == 15 || i_start_training_DVSEC || state_timeout || sync_lp_linkerror); // if (i_time_out) --> module iniates trainerror, if (i_decoded_SB_msg == 14) --> partner iniates trainerror, if bit [10] on DVSEC is set in any state rather than reset go to trainerror
-wire reset_state_timeout_counter  = (CS == RESET || CS == FINISH_RESET || CS == ACTIVE || CS == L1_L2 || CS == TRAINERROR || CS == TRAINERROR_HS || CS != NS); // reset the counter if state is transitioning (CS!=NS) or if we are in the stated states dont count
+wire trainerror_req_sampled = (&i_decoded_SB_msg & i_rx_msg_valid);
+wire trainerror_condition   = (i_time_out || trainerror_req_sampled || i_start_training_DVSEC || state_timeout || sync_lp_linkerror); // if (i_time_out) --> module iniates trainerror, if (i_decoded_SB_msg == 14) --> partner iniates trainerror, if bit [10] on DVSEC is set in any state rather than reset go to trainerror
+wire reset_state_timeout_counter  = (CS == RESET || CS == FINISH_RESET || CS == ACTIVE || CS == L1 || CS == L2 || CS == TRAINERROR || CS == TRAINERROR_HS || CS != NS); // reset the counter if state is transitioning (CS!=NS) or if we are in the stated states dont count
 wire ltsm_in_active = (CS == ACTIVE);
-// /////////////////////////////////
-// ///// RESET COUNTER (4 ms) //////
-// /////////////////////////////////
-// always @ (posedge i_clk or negedge i_rst_n) begin
-//     if(!i_rst_n) begin
-//         reset_counter <= 0;
-//     end else if (counter_reset_flag) begin
-//         reset_counter <= 0;
-//     end else if (start_reset_counter) begin // this condition is used to prevent the counter from counting in other states to save power, just count when training is triggered
-//         reset_counter <= reset_counter + 1;
-//     end 
-// end
 ////////////////////////////////////////
 //// STATE TIMEOUT COUNTER (8 ms) //////
 ////////////////////////////////////////
@@ -468,7 +452,6 @@ end
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////// NEXT STATE LOGIC //////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 always @ (*) begin
 	case (CS) 
 /*-----------------------------------------------------------------------------
@@ -481,16 +464,6 @@ always @ (*) begin
                 NS = RESET;
             end
         end
-// /*-----------------------------------------------------------------------------
-// * FINISH_RESET
-// *-----------------------------------------------------------------------------*/
-//         FINISH_RESET: begin
-//             if (reset_counter == COUNT_4ms) begin
-//                 NS = SBINIT;
-//             end else begin
-//                 NS = FINISH_RESET;
-//             end
-//         end
 /*-----------------------------------------------------------------------------
 * SBINIT
 *-----------------------------------------------------------------------------*/
@@ -640,7 +613,6 @@ end
 
 always @ (posedge i_clk or negedge i_rst_n) begin
 	if (!i_rst_n) begin
-        start_reset_counter <= 0;
         enter_from_active_or_mbtrain <= 0;
         SBINIT_EN       <= 0;
         MBINIT_EN       <= 0;
@@ -652,13 +624,14 @@ always @ (posedge i_clk or negedge i_rst_n) begin
         go_to_speedidle <= 0;
         o_pl_inband_pres     <= 0;
         clear_resolved_state <= 0;
+        partner_req_trainerror <= 0;
         valid_framing_error_reg <= 0;
     end else begin
         /************************************************************
          * converting valid framing error signal from pulse to level
         *************************************************************/
         valid_framing_error_reg <= i_valid_framing_error;
-        o_pl_error <= ((i_valid_framing_error & ~valid_framing_error_reg) && ltsm_in_active) 1 : (CS == PHYRETRAIN)? 0 : o_pl_error;
+        o_pl_error <= ((i_valid_framing_error & ~valid_framing_error_reg) && ltsm_in_active)? 1 : (CS == PHYRETRAIN)? 0 : o_pl_error;
         /************************************************************
          * initializing outputs
         *************************************************************/
@@ -733,13 +706,9 @@ always @ (posedge i_clk or negedge i_rst_n) begin
             end
         endcase
         /*-----------------------------------------------------------------------
-        * Reset counter related logic
+        * TRAINERROR related logic
         -----------------------------------------------------------------------*/
-        // if (i_start_training_SB || i_start_training_DVSEC)
-        //     start_reset_counter <= 1;
-        // else if (reset_counter == COUNT_4ms+1) 
-        //     start_reset_counter <= 0;
-        
+        partner_req_trainerror <= (trainerror_req_sampled)? 1 : (msg_valid_TRAINERROR)? 0 : partner_req_trainerror;
         /*-----------------------------------------------------------------------
         * PHYRETRAIN related logic
         -----------------------------------------------------------------------*/
