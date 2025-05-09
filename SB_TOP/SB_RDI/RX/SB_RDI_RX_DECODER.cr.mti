@@ -1,0 +1,23 @@
+C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv {2 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module TB_SB_RDI_DECODER
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv(51): (vlog-2999) Enum literal 'IDLE' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv(52): (vlog-2999) Enum literal 'FIFO_READ' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv(53): (vlog-2999) Enum literal 'DECODING' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv(54): (vlog-2999) Enum literal 'RDI_MSG' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv(55): (vlog-2999) Enum literal 'ADAPTER_MSG' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv(56): (vlog-2999) Enum literal 'ERROR_REPORT' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv(57): (vlog-2999) Enum literal 'MSG_WITHOUT_DATA' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv(58): (vlog-2999) Enum literal 'MSG_WITH_DATA' width (3) must match enum's width(32).
+
+Top level modules:
+	TB_SB_RDI_DECODER
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/FIFO/SB_RX_FIFO.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/FIFO/SB_RX_FIFO.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_RX_FIFO
+
+Top level modules:
+	SB_RX_FIFO
+
+} {} {}}

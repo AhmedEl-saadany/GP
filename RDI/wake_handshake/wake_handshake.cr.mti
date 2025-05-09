@@ -1,0 +1,29 @@
+C:/questasim64_2021.1/examples/GP_Design/synchronizers/bit_synchronizer.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/synchronizers/bit_synchronizer.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module bit_synchronizer
+
+Top level modules:
+	bit_synchronizer
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake/wake_handshake.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake/wake_handshake.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module wake_handshake
+
+Top level modules:
+	wake_handshake
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake/tb_wake_handshake.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake/tb_wake_handshake.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module tb_wake_handshake
+
+Top level modules:
+	tb_wake_handshake
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/generic_clk_divider.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/generic_clk_divider.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module generic_clk_divider
+
+Top level modules:
+	generic_clk_divider
+
+} {} {}}

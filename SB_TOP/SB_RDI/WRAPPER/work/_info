@@ -1,0 +1,402 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+!s11f vlog 2021.1 2021.01, Jan 19 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dC:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX
+T_opt
+!s110 1746203107
+Vof>Il7I:?^TaoR>4hg3A?3
+04 17 4 work TB_SB_RDI_ENCODER fast 0
+=41-8c1d968c3c64-6814f1e3-2c1-a1fc
+Z2 !s124 OEM100
+Z3 o-quiet -auto_acc_if_foreign -work work +acc
+Z4 tCvgOpt 0
+n@_opt
+Z5 OL;O;2021.1;73
+R1
+T_opt1
+!s110 1746210559
+Vo?P56^I4K^E8bjPL;L2A=1
+04 17 4 work TB_SB_RDI_WRAPPER fast 0
+=4-8c1d968c3c64-68150eff-2dd-6608
+R2
+R3
+R4
+n@_opt1
+R5
+R1
+vcredit_counter
+Z6 !s110 1746210670
+!i10b 1
+!s100 2QWKHASWfmo1=]CHOc5Qb3
+ID6;BP=F7L5C^Yl4jX5FV<3
+Z7 dC:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/WRAPPER
+w1746127588
+8../credit_loop_control/credit_counter.v
+F../credit_loop_control/credit_counter.v
+!i122 143
+L0 1 38
+Z8 VDg1SIo80bB@j0V0VzS_@n1
+Z9 OL;L;2021.1;73
+r1
+!s85 0
+31
+Z10 !s108 1746210670.000000
+Z11 !s107 ../credit_loop_control/credit_notifier.v|../credit_loop_control/credit_loop_controller.v|../credit_loop_control/credit_counter.v|
+Z12 !s90 -reportprogress|300|../credit_loop_control/credit_counter.v|../credit_loop_control/credit_loop_controller.v|../credit_loop_control/credit_notifier.v|
+!i113 0
+Z13 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R4
+vcredit_loop_controller
+R6
+!i10b 1
+!s100 ZGMXiV;GWB^[h2hWb]zkI2
+I=iW0GX>gabW;7oVQfbzZH0
+R7
+w1746203932
+8../credit_loop_control/credit_loop_controller.v
+F../credit_loop_control/credit_loop_controller.v
+!i122 143
+L0 1 46
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R4
+vcredit_notifier
+R6
+!i10b 1
+!s100 ]7F<Kl6e`=ZembM8X;Y:b3
+I;BTlAROcNif^Lz]`BZ1nV3
+R7
+w1746193025
+8../credit_loop_control/credit_notifier.v
+F../credit_loop_control/credit_notifier.v
+!i122 143
+L0 1 88
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R4
+vSB_CLOCK_CONTROLLER
+Z14 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+R6
+!i10b 1
+!s100 <9cF>ERe_f2Jhz5dnN[CB1
+Ia[0T]VEgc1aRM:a^3EKed2
+S1
+R7
+Z15 w1745346221
+8../../../SB_MB/SIDEBAND_TX/SB_CLK_CONTROLLER.sv
+F../../../SB_MB/SIDEBAND_TX/SB_CLK_CONTROLLER.sv
+!i122 146
+L0 1 83
+R8
+R9
+r1
+!s85 0
+31
+R10
+!s107 ../../../SB_MB/SIDEBAND_TX/SB_CLK_CONTROLLER.sv|
+!s90 -reportprogress|300|../../../SB_MB/SIDEBAND_TX/SB_CLK_CONTROLLER.sv|
+!i113 0
+R13
+R4
+n@s@b_@c@l@o@c@k_@c@o@n@t@r@o@l@l@e@r
+vSB_RDI_DECODER
+Z16 !s110 1746210669
+!i10b 1
+!s100 z7P;nHIGgUF@1>7:]QWbm2
+I5RRF[3TeaQ7`OoiiWilUH3
+R7
+w1746202895
+8../RX/SB_RDI_DECODER.v
+F../RX/SB_RDI_DECODER.v
+!i122 141
+L0 1 372
+R8
+R9
+r1
+!s85 0
+31
+Z17 !s108 1746210669.000000
+Z18 !s107 ../RX/SB_RX_FIFO.v|../RX/SB_RDI_DECODER.v|
+Z19 !s90 -reportprogress|300|../RX/SB_RDI_DECODER.v|../RX/SB_RX_FIFO.v|
+!i113 0
+R13
+R4
+n@s@b_@r@d@i_@d@e@c@o@d@e@r
+vSB_RDI_ENCODER
+R6
+!i10b 1
+!s100 ABhVj7[K<abhzZR3_LQ^d2
+IJa_i6LgTmFFkB[[IIMV523
+R7
+w1746194360
+8../TX/SB_RDI_ENCODER.v
+F../TX/SB_RDI_ENCODER.v
+!i122 142
+L0 1 320
+R8
+R9
+r1
+!s85 0
+31
+R10
+!s107 ../TX/SB_RDI_ENCODER.v|
+!s90 -reportprogress|300|../TX/SB_RDI_ENCODER.v|
+!i113 0
+R13
+R4
+n@s@b_@r@d@i_@e@n@c@o@d@e@r
+vSB_RDI_WRAPPER
+R16
+!i10b 1
+!s100 c7i<jS[oz^gV:z<kn<>X]1
+I]T_34jgIRi>CKXiN?Z1BU1
+R7
+w1746203970
+8./SB_RDI_WRAPPER.v
+F./SB_RDI_WRAPPER.v
+!i122 139
+L0 1 137
+R8
+R9
+r1
+!s85 0
+31
+R17
+!s107 ./SB_RDI_WRAPPER.v|
+!s90 -reportprogress|300|./SB_RDI_WRAPPER.v|
+!i113 0
+R13
+R4
+n@s@b_@r@d@i_@w@r@a@p@p@e@r
+vSB_RX_DESER
+R14
+R6
+!i10b 1
+!s100 `[7eLZTR`3fc_6;n1g<:12
+I@1lJ@2>Q;S0ZZM:eU1e9C1
+S1
+R7
+w1745458394
+8../../../SB_MB/ANALOG_MODELLING/SB_RX_DESERIALIZER.sv
+F../../../SB_MB/ANALOG_MODELLING/SB_RX_DESERIALIZER.sv
+!i122 147
+L0 1 54
+R8
+R9
+r1
+!s85 0
+31
+R10
+!s107 ../../../SB_MB/ANALOG_MODELLING/SB_TX_SERIALIZER.sv|../../../SB_MB/ANALOG_MODELLING/SB_RX_DESERIALIZER.sv|
+Z20 !s90 -reportprogress|300|../../../SB_MB/ANALOG_MODELLING/SB_RX_DESERIALIZER.sv|../../../SB_MB/ANALOG_MODELLING/SB_TX_SERIALIZER.sv|
+!i113 0
+R13
+R4
+n@s@b_@r@x_@d@e@s@e@r
+vSB_RX_FIFO
+R16
+!i10b 1
+!s100 PR4QW@iZQNMU[S5_OZU]Q0
+IWSkjFIVR22jj53=bYQfTB1
+R7
+w1746047675
+8../RX/SB_RX_FIFO.v
+F../RX/SB_RX_FIFO.v
+!i122 141
+L0 1 68
+R8
+R9
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 0
+R13
+R4
+n@s@b_@r@x_@f@i@f@o
+vSB_TX_FIFO
+R14
+R6
+!i10b 1
+!s100 ]B9UQ1<kWH?dbZNj>0BJ?2
+In0Zh[A4`1g;E7>E@C5Tz02
+S1
+R7
+w1746193880
+8../../../SB_MB/SIDEBAND_TX/SB_TX_FIFO.sv
+F../../../SB_MB/SIDEBAND_TX/SB_TX_FIFO.sv
+!i122 144
+L0 1 84
+R8
+R9
+r1
+!s85 0
+31
+R10
+!s107 ../../../SB_MB/SIDEBAND_TX/SB_TX_FIFO.sv|
+!s90 -reportprogress|300|../../../SB_MB/SIDEBAND_TX/SB_TX_FIFO.sv|
+!i113 0
+R13
+R4
+n@s@b_@t@x_@f@i@f@o
+vSB_TX_FSM_Modelling
+R14
+R6
+!i10b 1
+!s100 c7m[MF=Xn3V_o6QggEaNh1
+In5VE<43D21C2LZ2H`@BC@2
+S1
+R7
+w1746132173
+8../../../SB_MB/SIDEBAND_TX/SB_TX_FSM_Modelling.sv
+F../../../SB_MB/SIDEBAND_TX/SB_TX_FSM_Modelling.sv
+!i122 145
+L0 1 102
+R8
+R9
+r1
+!s85 0
+31
+R10
+!s107 ../../../SB_MB/SIDEBAND_TX/SB_TX_FSM_Modelling.sv|
+!s90 -reportprogress|300|../../../SB_MB/SIDEBAND_TX/SB_TX_FSM_Modelling.sv|
+!i113 0
+R13
+R4
+n@s@b_@t@x_@f@s@m_@modelling
+vSB_TX_SERIALIZER
+R14
+R6
+!i10b 1
+!s100 PV`oI6m9U6HJj6^B7mG^k1
+I<;CZ5^^[KWTnXe@NN5CcM3
+S1
+R7
+R15
+8../../../SB_MB/ANALOG_MODELLING/SB_TX_SERIALIZER.sv
+F../../../SB_MB/ANALOG_MODELLING/SB_TX_SERIALIZER.sv
+!i122 147
+L0 1 86
+R8
+R9
+r1
+!s85 0
+31
+R10
+Z21 !s107 ../../../SB_MB/ANALOG_MODELLING/SB_TX_SERIALIZER.sv|../../../SB_MB/ANALOG_MODELLING/SB_RX_DESERIALIZER.sv|
+R20
+!i113 0
+R13
+R4
+n@s@b_@t@x_@s@e@r@i@a@l@i@z@e@r
+vTB_SB_RDI_ENCODER
+R14
+!s110 1746210493
+!i10b 1
+!s100 a[:9BhC;HDlhgdnU9SUUS0
+IhIM]HYn6lcH:ZWCm_z]^50
+S1
+R7
+w1746203099
+Z22 8./TB_SB_RDI_WRAPPER.sv
+Z23 F./TB_SB_RDI_WRAPPER.sv
+!i122 113
+Z24 L0 2 501
+R8
+R9
+r1
+!s85 0
+31
+!s108 1746210493.000000
+Z25 !s107 ./TB_SB_RDI_WRAPPER.sv|
+Z26 !s90 -reportprogress|300|./TB_SB_RDI_WRAPPER.sv|
+!i113 0
+R13
+R4
+n@t@b_@s@b_@r@d@i_@e@n@c@o@d@e@r
+vTB_SB_RDI_WRAPPER
+R14
+R16
+!i10b 1
+!s100 Ik0BcE0<80mM9hfjAbNAj3
+IUZd=gXFO_Jo<Pa@9W8DD[3
+S1
+R7
+w1746210553
+R22
+R23
+!i122 140
+R24
+R8
+R9
+r1
+!s85 0
+31
+R17
+R25
+R26
+!i113 0
+R13
+R4
+n@t@b_@s@b_@r@d@i_@w@r@a@p@p@e@r

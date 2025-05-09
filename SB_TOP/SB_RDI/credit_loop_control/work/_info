@@ -1,0 +1,113 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+!s11f vlog 2021.1 2021.01, Jan 19 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_loop_controller
+T_opt
+!s110 1746127596
+VEYl=j`TIFg`TNEJ;Y^2=T1
+04 25 4 work tb_credit_loop_controller fast 0
+=2-8c1d968c3c64-6813caec-2bc-3898
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work +acc
+Z1 tCvgOpt 0
+n@_opt
+OL;O;2021.1;73
+vcredit_counter
+Z2 !s110 1746127591
+!i10b 1
+!s100 2QWKHASWfmo1=]CHOc5Qb3
+IFVBf6nSRQgk^TZKl<MlgE2
+Z3 dC:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control
+w1746127588
+8C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_counter.v
+FC:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_counter.v
+!i122 8
+L0 1 38
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2021.1;73
+r1
+!s85 0
+31
+Z6 !s108 1746127591.000000
+!s107 C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_counter.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_counter.v|
+!i113 0
+Z7 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vcredit_loop_controller
+!s110 1746127293
+!i10b 1
+!s100 KSUo?NAUa=mo8aJMJSHCD2
+Ii6[bz10nf?WI8?=j?;fl]3
+R3
+w1746124552
+8C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_loop_controller.v
+FC:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_loop_controller.v
+!i122 4
+L0 1 42
+R4
+R5
+r1
+!s85 0
+31
+!s108 1746127293.000000
+!s107 C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_loop_controller.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_loop_controller.v|
+!i113 0
+R7
+R1
+vcredit_notifier
+!s110 1746127323
+!i10b 1
+!s100 _9bMOfYaae@VKPCQ0Ah>V0
+IF@DFkb08B0bzKYiD8mELZ2
+R3
+w1746127321
+8C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_notifier.v
+FC:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_notifier.v
+!i122 6
+L0 1 47
+R4
+R5
+r1
+!s85 0
+31
+!s108 1746127323.000000
+!s107 C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_notifier.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_notifier.v|
+!i113 0
+R7
+R1
+vtb_credit_loop_controller
+DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+R2
+!i10b 1
+!s100 WCBe;H^zNho8BC?XJRNOG3
+IVcmLC6cBB2EAl8S_5PEB<2
+S1
+R3
+w1746127463
+8C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/tb_credit_loop_controller.sv
+FC:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/tb_credit_loop_controller.sv
+!i122 9
+L0 3 167
+R4
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/tb_credit_loop_controller.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/tb_credit_loop_controller.sv|
+!i113 0
+o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1

@@ -1,0 +1,118 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+R0
+!s11f vlog 2021.1 2021.01, Jan 19 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dC:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake
+T_opt
+!s110 1745714011
+VT;`hZ:b;Iifa]ESiTnT7l0
+04 17 4 work tb_wake_handshake fast 0
+=10-8c1d968c3c64-680d7b5b-1c8-88c
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work +acc
+Z2 tCvgOpt 0
+n@_opt
+OL;O;2021.1;73
+vbit_synchronizer
+Z3 !s110 1745708758
+!i10b 1
+!s100 kFZkazizkiB0][aTWXgf01
+Ihg=nffKmlTFOYROZ6FIeM3
+R1
+w1745582362
+8C:/questasim64_2021.1/examples/GP_Design/synchronizers/bit_synchronizer.v
+FC:/questasim64_2021.1/examples/GP_Design/synchronizers/bit_synchronizer.v
+!i122 7
+L0 7 20
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2021.1;73
+r1
+!s85 0
+31
+Z6 !s108 1745708758.000000
+!s107 C:/questasim64_2021.1/examples/GP_Design/synchronizers/bit_synchronizer.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/questasim64_2021.1/examples/GP_Design/synchronizers/bit_synchronizer.v|
+!i113 0
+Z7 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vgeneric_clk_divider
+R3
+!i10b 1
+!s100 fRi0lYmeO^f@aJ69IXiVR3
+Ih[=azI;Mm66ik9M<3_PcA3
+R1
+w1745707257
+8C:/questasim64_2021.1/examples/GP_Design/RDI/generic_clk_divider.v
+FC:/questasim64_2021.1/examples/GP_Design/RDI/generic_clk_divider.v
+!i122 6
+L0 1 63
+R4
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/questasim64_2021.1/examples/GP_Design/RDI/generic_clk_divider.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/questasim64_2021.1/examples/GP_Design/RDI/generic_clk_divider.v|
+!i113 0
+R7
+R2
+vtb_wake_handshake
+DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z8 !s110 1745714008
+!i10b 1
+!s100 eCS;8A_VP7k5n>bi8kfij0
+IFOVmzN2GVO1hGmJ:J@dm43
+S1
+R1
+w1745714004
+8C:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake/tb_wake_handshake.sv
+FC:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake/tb_wake_handshake.sv
+!i122 14
+L0 1 154
+R4
+R5
+r1
+!s85 0
+31
+Z9 !s108 1745714008.000000
+!s107 C:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake/tb_wake_handshake.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake/tb_wake_handshake.sv|
+!i113 0
+o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vwake_handshake
+R8
+!i10b 1
+!s100 j^WGaHMPdRWGK7hNbSc>m3
+I@YJaB5XRkb0<JRmIhNl^L2
+R1
+w1745713975
+8C:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake/wake_handshake.v
+FC:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake/wake_handshake.v
+!i122 15
+L0 1 73
+R4
+R5
+r1
+!s85 0
+31
+R9
+!s107 C:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake/wake_handshake.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/questasim64_2021.1/examples/GP_Design/RDI/wake_handshake/wake_handshake.v|
+!i113 0
+R7
+R2

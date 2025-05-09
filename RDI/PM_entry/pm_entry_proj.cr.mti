@@ -1,0 +1,113 @@
+C:/questasim64_2021.1/examples/GP_Design/SB_MB/SIDEBAND_TX/SB_TX_FIFO.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/SB_MB/SIDEBAND_TX/SB_TX_FIFO.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_TX_FIFO
+
+Top level modules:
+	SB_TX_FIFO
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/PM_entry/PM_entry_tx.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/PM_entry/PM_entry_tx.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module PM_entry_tx
+
+Top level modules:
+	PM_entry_tx
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_counter.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_counter.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module credit_counter
+
+Top level modules:
+	credit_counter
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/SB_RDI_ENCODER.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/SB_RDI_ENCODER.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_RDI_ENCODER
+
+Top level modules:
+	SB_RDI_ENCODER
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/PM_entry/PM_entry_wrapper.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/PM_entry/PM_entry_wrapper.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module PM_entry_wrapper
+
+Top level modules:
+	PM_entry_wrapper
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/SB_MB/SIDEBAND_TX/SB_CLK_CONTROLLER.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/SB_MB/SIDEBAND_TX/SB_CLK_CONTROLLER.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_CLOCK_CONTROLLER
+
+Top level modules:
+	SB_CLOCK_CONTROLLER
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_loop_controller.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_loop_controller.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module credit_loop_controller
+
+Top level modules:
+	credit_loop_controller
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/RX/SB_RX_FIFO.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/RX/SB_RX_FIFO.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_RX_FIFO
+
+Top level modules:
+	SB_RX_FIFO
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/WRAPPER/SB_RDI_WRAPPER.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/WRAPPER/SB_RDI_WRAPPER.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_RDI_WRAPPER
+
+Top level modules:
+	SB_RDI_WRAPPER
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/PM_entry/delay_cell.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/PM_entry/delay_cell.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module delay_cell
+
+Top level modules:
+	delay_cell
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_notifier.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_notifier.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module credit_notifier
+
+Top level modules:
+	credit_notifier
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/SB_MB/ANALOG_MODELLING/SB_RX_DESERIALIZER.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/SB_MB/ANALOG_MODELLING/SB_RX_DESERIALIZER.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_RX_DESER
+
+Top level modules:
+	SB_RX_DESER
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/SB_MB/SIDEBAND_TX/SB_TX_FSM_Modelling.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/SB_MB/SIDEBAND_TX/SB_TX_FSM_Modelling.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_TX_FSM_Modelling
+
+Top level modules:
+	SB_TX_FSM_Modelling
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/SB_MB/ANALOG_MODELLING/SB_TX_SERIALIZER.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/SB_MB/ANALOG_MODELLING/SB_TX_SERIALIZER.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_TX_SERIALIZER
+
+Top level modules:
+	SB_TX_SERIALIZER
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/RX/SB_RDI_DECODER.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/RX/SB_RDI_DECODER.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_RDI_DECODER
+
+Top level modules:
+	SB_RDI_DECODER
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/PM_entry/PM_entry_rx.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/PM_entry/PM_entry_rx.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module PM_entry_rx
+
+Top level modules:
+	PM_entry_rx
+
+} {} {}}

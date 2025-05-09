@@ -1,0 +1,29 @@
+C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_counter.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_counter.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module credit_counter
+
+Top level modules:
+	credit_counter
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_notifier.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_notifier.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module credit_notifier
+
+Top level modules:
+	credit_notifier
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/tb_credit_loop_controller.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/tb_credit_loop_controller.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module tb_credit_loop_controller
+
+Top level modules:
+	tb_credit_loop_controller
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_loop_controller.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_loop_controller.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module credit_loop_controller
+
+Top level modules:
+	credit_loop_controller
+
+} {} {}}

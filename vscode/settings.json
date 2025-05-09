@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+      "*.v": "systemverilog",
+      "*.sv": "systemverilog"
+    },
+    "systemverilog.includeIndexing": true,
+    "systemverilog.launchConfiguration": "svlangserver",
+    "systemverilog.languageServer.command": "svlangserver"
+  }
+  

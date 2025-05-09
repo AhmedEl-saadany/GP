@@ -1,0 +1,29 @@
+C:/questasim64_2021.1/examples/GP_git/UCIE_phy/MB_Blocks/clock_tx_rx/tb_clock_generator.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_git/UCIE_phy/MB_Blocks/clock_tx_rx/tb_clock_generator.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module tb_clock_generator
+
+Top level modules:
+	tb_clock_generator
+
+} {} {}} C:/questasim64_2021.1/examples/GP_git/UCIE_phy/LTSM/SHARED_MODULE/clock_div_32.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_git/UCIE_phy/LTSM/SHARED_MODULE/clock_div_32.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module clock_div_32
+
+Top level modules:
+	clock_div_32
+
+} {} {}} C:/questasim64_2021.1/examples/GP_git/UCIE_phy/MB_Blocks/clock_tx_rx/clock_generator.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_git/UCIE_phy/MB_Blocks/clock_tx_rx/clock_generator.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module clock_generator
+
+Top level modules:
+	clock_generator
+
+} {} {}} C:/questasim64_2021.1/examples/GP_git/UCIE_phy/MB_Blocks/clock_tx_rx/clock_detector.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_git/UCIE_phy/MB_Blocks/clock_tx_rx/clock_detector.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module clock_detector
+
+Top level modules:
+	clock_detector
+
+} {} {}}

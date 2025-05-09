@@ -1,0 +1,63 @@
+module generic_clk_divider (i_ref_clk , i_rst_n , i_clk_en , i_div_ratio , o_div_clk);
+
+////////////////////////////////////////////////////////
+//////////////////// PARAMETERS //////////////////////// 
+////////////////////////////////////////////////////////
+
+parameter DIV_WIDTH = 16;
+
+////////////////////////////////////////////////////////
+/////////////////// IN/OUT PORTS /////////////////////// 
+////////////////////////////////////////////////////////
+
+input							i_ref_clk;
+input							i_rst_n;
+input							i_clk_en;
+input		[DIV_WIDTH-1:0]		i_div_ratio;
+output 	reg						o_div_clk;
+
+////////////////////////////////////////////////////////
+/////////////////// INTERNAL SIG /////////////////////// 
+////////////////////////////////////////////////////////
+
+wire							ClK_DIV_EN;
+wire		[DIV_WIDTH-2:0]		fall_edge;
+reg			[DIV_WIDTH-2:0]		counter;
+reg								op_clk_div;
+wire 							o_div_clk_comb;
+
+////////////////////////////////////////////////////////
+////////////////// ASSIGN STATMENTS //////////////////// 
+////////////////////////////////////////////////////////
+
+assign ClK_DIV_EN     = i_clk_en && ( i_div_ratio != 0) && ( i_div_ratio != 1);
+assign fall_edge      = i_div_ratio - (i_div_ratio>>1);
+assign o_div_clk_comb = (ClK_DIV_EN)? op_clk_div:i_ref_clk;
+
+////////////////////////////////////////////////////////
+/////////////////// DIVISON BLOCK ////////////////////// 
+////////////////////////////////////////////////////////
+
+always @ (posedge i_ref_clk or negedge i_rst_n) begin
+	if (!i_rst_n) begin
+		counter   		  <= 0;
+		op_clk_div 		  <= 0;
+		o_div_clk 		  <= 0;
+	end
+	else begin 
+		if (ClK_DIV_EN) begin
+			counter <= counter + 1;
+			if ((counter == 0 || counter == fall_edge))
+				op_clk_div <= !op_clk_div;
+			if (counter == i_div_ratio-1)
+				counter <= 0;
+		end
+		else begin
+			counter <= 0;
+		end
+		o_div_clk <= o_div_clk_comb;
+	end
+end
+
+
+endmodule 

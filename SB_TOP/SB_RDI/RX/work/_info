@@ -1,0 +1,113 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+!s11f vlog 2021.1 2021.01, Jan 19 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/questasim64_2021.1/examples
+T_opt
+!s110 1746056231
+V9077YHb:9c<W?C1Ck54Ma3
+04 17 4 work TB_SB_RDI_DECODER fast 0
+=24-8c1d968c3c64-6812b427-211-7ddc
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work +acc
+Z1 tCvgOpt 0
+n@_opt
+OL;O;2021.1;73
+vSB_RDI_DECODER
+!s110 1746056188
+!i10b 1
+!s100 ggR1JczzTB<aX`86UkZjJ1
+IRFgH:nHT1IijRmHReIRbA2
+Z2 dC:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER
+w1746056185
+8C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/SB_RDI_DECODER.v
+FC:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/SB_RDI_DECODER.v
+!i122 25
+L0 1 370
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 OL;L;2021.1;73
+r1
+!s85 0
+31
+!s108 1746056188.000000
+!s107 C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/SB_RDI_DECODER.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/SB_RDI_DECODER.v|
+!i113 0
+o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+n@s@b_@r@d@i_@d@e@c@o@d@e@r
+vSB_RX_FIFO
+Z5 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+!s110 1746047686
+!i10b 1
+!s100 `=L2NbO^DdQ1?F>Rlj:GD1
+II2Tf_L][Ib=nk^;Lk`z<]2
+S1
+R2
+w1746047675
+8C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/FIFO/SB_RX_FIFO.sv
+FC:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/FIFO/SB_RX_FIFO.sv
+!i122 8
+L0 1 68
+R3
+R4
+r1
+!s85 0
+31
+!s108 1746047686.000000
+!s107 C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/FIFO/SB_RX_FIFO.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/FIFO/SB_RX_FIFO.sv|
+!i113 0
+Z6 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+n@s@b_@r@x_@f@i@f@o
+vTB_SB_RDI_DECODER
+R5
+!s110 1746055461
+!i10b 1
+!s100 A?3gWa9KRZXn3CUbhXOlO2
+IB;f3J371VBkL=;7;JC>l@1
+S1
+R2
+w1746055454
+8C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv
+FC:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv
+!i122 23
+L0 3 374
+R3
+R4
+r1
+!s85 0
+31
+!s108 1746055461.000000
+!s107 C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/questasim64_2021.1/examples/GP_Design/RDI/sideband_rdi/RX/DECODER/TB_SB_RDI_DECODER.sv|
+!i113 0
+R6
+R1
+n@t@b_@s@b_@r@d@i_@d@e@c@o@d@e@r

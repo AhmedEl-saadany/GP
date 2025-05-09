@@ -1,0 +1,15 @@
+C:/questasim64_2021.1/examples/GP_Design/RDI/clk_handshake/tb_clk_handshake.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/clk_handshake/tb_clk_handshake.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module tb_clk_handshake
+
+Top level modules:
+	tb_clk_handshake
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/clk_handshake/clk_handshake.v {1 {vlog -work work -vopt -stats=none {C:\questasim64_2021.1\examples\GP_Design\RDI\clk_handshake\clk_handshake.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module clk_handshake
+
+Top level modules:
+	clk_handshake
+
+} {} {}}

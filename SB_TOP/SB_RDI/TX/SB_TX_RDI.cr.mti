@@ -1,0 +1,71 @@
+C:/questasim64_2021.1/examples/GP_Design/SB_MB/SIDEBAND_TX/SB_TX_FIFO.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/SB_MB/SIDEBAND_TX/SB_TX_FIFO.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_TX_FIFO
+
+Top level modules:
+	SB_TX_FIFO
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/SB_MB/SIDEBAND_TX/SB_TX_FSM_Modelling.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/SB_MB/SIDEBAND_TX/SB_TX_FSM_Modelling.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_TX_FSM_Modelling
+
+Top level modules:
+	SB_TX_FSM_Modelling
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_notifier.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_notifier.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module credit_notifier
+
+Top level modules:
+	credit_notifier
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/SB_RDI_ENCODER.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/SB_RDI_ENCODER.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_RDI_ENCODER
+
+Top level modules:
+	SB_RDI_ENCODER
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/TB_SB_RDI_ENCODER.sv {2 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/TB_SB_RDI_ENCODER.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module TB_SB_RDI_ENCODER
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/TB_SB_RDI_ENCODER.sv(111): (vlog-2999) Enum literal 'DECODING' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/TB_SB_RDI_ENCODER.sv(112): (vlog-2999) Enum literal 'HEADER_PHASE0_CAPTURED' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/TB_SB_RDI_ENCODER.sv(113): (vlog-2999) Enum literal 'HEADER_PHASE1_CAPTURED' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/TB_SB_RDI_ENCODER.sv(114): (vlog-2999) Enum literal 'DATA_PHASE0_CAPTURED' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/TB_SB_RDI_ENCODER.sv(115): (vlog-2999) Enum literal 'DATA_PHASE1_CAPTURED' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/TB_SB_RDI_ENCODER.sv(116): (vlog-2999) Enum literal 'ERROR_REPORT' width (3) must match enum's width(32).
+** Warning: C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/TX/TB_SB_RDI_ENCODER.sv(117): (vlog-2999) Enum literal 'RDI_MSG' width (3) must match enum's width(32).
+
+Top level modules:
+	TB_SB_RDI_ENCODER
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_counter.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_counter.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module credit_counter
+
+Top level modules:
+	credit_counter
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/SB_MB/ANALOG_MODELLING/SB_TX_SERIALIZER.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/SB_MB/ANALOG_MODELLING/SB_TX_SERIALIZER.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_TX_SERIALIZER
+
+Top level modules:
+	SB_TX_SERIALIZER
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_loop_controller.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_Design/RDI/SB_RDI/credit_loop_control/credit_loop_controller.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module credit_loop_controller
+
+Top level modules:
+	credit_loop_controller
+
+} {} {}} C:/questasim64_2021.1/examples/GP_Design/SB_MB/SIDEBAND_TX/SB_CLK_CONTROLLER.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_Design/SB_MB/SIDEBAND_TX/SB_CLK_CONTROLLER.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module SB_CLOCK_CONTROLLER
+
+Top level modules:
+	SB_CLOCK_CONTROLLER
+
+} {} {}}

@@ -1,0 +1,29 @@
+C:/questasim64_2021.1/examples/GP_git/UCIE_phy/LTSM/SHARED_MODULE/clock_div_32.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_git/UCIE_phy/LTSM/SHARED_MODULE/clock_div_32.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module clock_div_32
+
+Top level modules:
+	clock_div_32
+
+} {} {}} C:/questasim64_2021.1/examples/GP_git/UCIE_phy/MB_modelling/Data_serializer/TB_MB_TX_SERIALIZER.sv {1 {vlog -work work -vopt -sv -stats=none C:/questasim64_2021.1/examples/GP_git/UCIE_phy/MB_modelling/Data_serializer/TB_MB_TX_SERIALIZER.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module TB_MB_TX_SERIALIZER
+
+Top level modules:
+	TB_MB_TX_SERIALIZER
+
+} {} {}} C:/questasim64_2021.1/examples/GP_git/UCIE_phy/MB_modelling/Data_deserializer/MB_RX_DESER.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_git/UCIE_phy/MB_modelling/Data_deserializer/MB_RX_DESER.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module MB_RX_DESER
+
+Top level modules:
+	MB_RX_DESER
+
+} {} {}} C:/questasim64_2021.1/examples/GP_git/UCIE_phy/MB_modelling/Data_serializer/MB_TX_SERIALIZER.v {1 {vlog -work work -vopt -stats=none C:/questasim64_2021.1/examples/GP_git/UCIE_phy/MB_modelling/Data_serializer/MB_TX_SERIALIZER.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module MB_TX_SERIALIZER
+
+Top level modules:
+	MB_TX_SERIALIZER
+
+} {} {}}
