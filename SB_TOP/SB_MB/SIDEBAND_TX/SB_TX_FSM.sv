@@ -22,9 +22,8 @@ module SB_FSM (
 localparam IDLE          = 0;
 localparam PATTERN_GEN   = 1;
 localparam LTSM_ENCODE   = 2;
-localparam DATA_FRAME    = 3;
-localparam HEADER_FRAME  = 4;
-localparam END_MESSAGE   = 5;
+localparam FRAMING       = 3;
+localparam END_MESSAGE   = 4;
 
 
 /*------------------------------------------------------------------------------
@@ -81,32 +80,20 @@ always @(*) begin
         end 
 
         LTSM_ENCODE: begin
-            if (i_d_valid) begin
-                ns = DATA_FRAME;
-            end
-            else if (i_header_valid) begin
-                ns = HEADER_FRAME;
+            if (i_d_valid && i_header_valid) begin
+                ns = FRAMING;
             end
             else begin
                 ns = LTSM_ENCODE;
             end
         end 
 
-        DATA_FRAME: begin
-            if (i_header_valid) begin
-                ns = HEADER_FRAME;
-            end
-            else begin
-                ns = DATA_FRAME;
-            end
-        end 
-
-        HEADER_FRAME: begin
+        FRAMING: begin
             if (i_packet_valid) begin
                 ns = END_MESSAGE;
             end
             else begin
-                ns = HEADER_FRAME;
+                ns = FRAMING;
             end
         end 
 
@@ -129,7 +116,7 @@ end
 always @(posedge i_clk or negedge i_rst_n) begin 
     if (~i_rst_n) begin
         go_to_idle_counter <= 2'b00;
-    end else if (cs == HEADER_FRAME && ns == END_MESSAGE) begin
+    end else if (cs == FRAMING && ns == END_MESSAGE) begin
         go_to_idle_counter <= 2'b00;
     end else begin
         go_to_idle_counter <= go_to_idle_counter + 1;
@@ -172,24 +159,15 @@ always @(*) begin
 
         LTSM_ENCODE: begin
             o_busy = 1;
-            if (ns == DATA_FRAME) begin
-                o_data_frame_enable_next = 1;
+            if (ns == FRAMING) begin
+                o_header_frame_enable_next  = 1;
+                o_data_frame_enable_next    = 1;
             end
-            else if (ns == HEADER_FRAME) begin
-                o_header_frame_enable_next = 1;
-            end
-        end 
+        end
 
-        DATA_FRAME: begin
+        FRAMING: begin
             o_busy = 1;
-            if (ns == HEADER_FRAME) begin
-                o_header_frame_enable_next = 1;
-            end
         end 
-
-        HEADER_FRAME: begin
-            o_busy = 1;
-        end  
 
         END_MESSAGE: begin
             if (ns == IDLE) begin
@@ -221,4 +199,4 @@ always @(posedge i_clk or negedge i_rst_n) begin
 end
 
 
-endmodule : SB_FSM
+endmodule 

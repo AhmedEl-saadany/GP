@@ -4,6 +4,7 @@ module SB_PACKET_FRAMING (
 	input		[61:0]	i_header,
 	input		[63:0]	i_data,
 	input				i_header_valid,
+	input 				i_data_valid,
 	input 				i_d_valid,
 	input 				i_ser_done,
 	output	reg	[63:0]	o_framed_packet_phase,
@@ -19,6 +20,7 @@ reg cp, dp;
 reg cp_ready, dp_ready;
 reg msg_with_data;
 reg header_phase_sent;
+reg check_fifo_full_after_header_sent;
 
 /*------------------------------------------------------------------------------
 -- Conditions
@@ -57,7 +59,7 @@ always @(posedge i_clk or negedge i_rst_n) begin
 	else if (i_d_valid) begin
 		dp 					<= ^i_data;
 		dp_ready 			<=	1;
-		if (|i_data) begin
+		if (i_data_valid) begin
 			msg_with_data 	<= 1;
 		end
 		else begin
@@ -76,6 +78,7 @@ always @(posedge i_clk or negedge i_rst_n) begin
 		o_timeout_ctr_start			<= 0; 
 		o_packet_valid 				<= 0;
 		header_phase_sent 			<= 0;
+		check_fifo_full_after_header_sent <= 0;
 	end 
 	else begin
 		if (READY_TO_SEND_HEADER) begin
@@ -85,8 +88,9 @@ always @(posedge i_clk or negedge i_rst_n) begin
 			if (i_header[17:14] == 5) begin
 				o_timeout_ctr_start		<= 1;
 			end
+			check_fifo_full_after_header_sent <= 0;
 		end
-		else if (READY_TO_SEND_DATA) begin
+		else if (READY_TO_SEND_DATA && check_fifo_full_after_header_sent) begin
 			o_framed_packet_phase 	<= i_data;
 			o_timeout_ctr_start		<= 0;
 			header_phase_sent 		<= 0;
@@ -100,8 +104,9 @@ always @(posedge i_clk or negedge i_rst_n) begin
 		else begin
 			o_timeout_ctr_start		<= 0; 
 			o_packet_valid 			<= 0;
+			check_fifo_full_after_header_sent <= 1;
 		end
 	end
 end
 
-endmodule : SB_PACKET_FRAMING
+endmodule 

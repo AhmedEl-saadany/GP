@@ -58,114 +58,83 @@ assign ser_enable = (~i_fifo_full);  // ser_done for the packet framing block
 /*------------------------------------------------------------------------------
 -- Blocks Instantiation
 ------------------------------------------------------------------------------*/
-// SB_CLOCK_CONTROLLER clock_controller_dut (
-//     .i_pll_clk      (i_clk), //
-//     .i_rst_n        (i_rst_n), //
-//     .i_enable       (o_clk_ser_en), // 
-//     .o_pack_finished(o_pack_finished), //
-//     .o_ser_done     (ser_done), //
-//     .TXCKSB         (TXCKSB) //
-// );
-
-// SB_TX_FSM_Modelling fsm_model (
-// 	.i_rst_n          (i_rst_n),
-// 	.i_clk            (i_clk),
-// 	.i_ser_done       (ser_done),
-// 	.i_empty          (fifo_empty),
-// 	.i_packet_finished(o_pack_finished),
-// 	.i_read_enable_sampled(o_ser_done_sampled),
-// 	.o_read_enable    (read_enable),
-// 	.o_clk_en         (o_clk_ser_en)
-// );
-
-// SB_TX_FIFO tx_fifo_dut (
-// 	.i_clk         (i_divided_clk),
-// 	.i_rst_n       (i_rst_n),
-// 	.i_data_in     (tx_data_out), //
-// 	.i_write_enable(write_enable), //
-// 	.i_read_enable (read_enable), //
-// 	.o_data_out    (o_fifo_data), //
-// 	.o_empty       (fifo_empty), //
-// 	.o_ser_done_sampled(o_ser_done_sampled),
-// 	.o_full        (fifo_full) //
-// );
-
 SB_PACKET_ENCODER_WRAPPER packet_encoder_dut (
-	.i_clk                    (i_divided_clk),//
-	.i_rst_n                  (i_rst_n),//
-	.i_start_pattern_req      (i_start_pattern_req),//
-	.i_rx_sb_pattern_samp_done(i_rx_sb_pattern_samp_done),//
-	.i_rx_sb_rsp_delivered    (i_rx_sb_rsp_delivered),//
-	.i_ser_done               (ser_enable),//
-	.o_time_out               (o_time_out),//
-	.o_start_pattern_done     (o_start_pattern_done),//
-	.i_packet_valid           (packet_valid),//
-	.i_timeout_ctr_start      (start_count), //
-	.i_framed_packet_phase    (framed_packet_phase), //
-	.o_final_packet           (o_tx_data_out), //
-	.o_pattern_valid          (pattern_valid),
-	.i_stop_cnt               (i_stop_cnt) //
+	.i_clk                    (i_divided_clk),
+	.i_rst_n                  (i_rst_n),
+	.i_start_pattern_req      (i_start_pattern_req),
+	.i_rx_sb_pattern_samp_done(i_rx_sb_pattern_samp_done),
+	.i_rx_sb_rsp_delivered    (i_rx_sb_rsp_delivered),
+	.i_ser_done               (ser_enable),
+	.i_packet_valid           (packet_valid),
+	.i_timeout_ctr_start      (start_count), 
+	.i_framed_packet_phase    (framed_packet_phase), 
+	.i_stop_cnt               (i_stop_cnt), 
+	.o_time_out               (o_time_out),
+	.o_start_pattern_done     (o_start_pattern_done),
+	.o_final_packet           (o_tx_data_out), 
+	.o_pattern_valid          (pattern_valid)
 );
 
 SB_PACKET_FRAMING packet_framing_dut (
-	.i_clk                (i_divided_clk), //
-	.i_rst_n              (i_rst_n), //
-	.i_ser_done           (ser_enable), //
-	.i_header             (header), //
-	.i_data               (data), //
-	.i_header_valid       (header_frame_enable), //
-	.i_d_valid            (data_frame_enable), //
-	.o_framed_packet_phase(framed_packet_phase), //
-	.o_timeout_ctr_start  (start_count), //
-	.o_packet_valid       (packet_valid) //
+	.i_clk                (i_divided_clk), 
+	.i_rst_n              (i_rst_n), 
+	.i_ser_done           (ser_enable), 
+	.i_header             (header), 
+	.i_data               (data), 
+	.i_header_valid       (header_frame_enable), 
+	.i_data_valid		  (i_data_valid),
+	.i_d_valid            (data_frame_enable), 
+	.o_framed_packet_phase(framed_packet_phase), 
+	.o_timeout_ctr_start  (start_count), 
+	.o_packet_valid       (packet_valid) 
 );
 
 SB_HEADER_ENCODER header_encoder_dut (
-	.i_clk             (i_divided_clk), //
-	.i_rst_n           (i_rst_n), //
-	.i_data_valid      (data_encoder_enable), //
-	.i_msg_valid       (header_encoder_enable), //
-	.i_state           (i_state), //
-	.i_sub_state       (i_sub_state), //
-	.i_msg_no          (i_msg_no), //
-	.i_msg_info        (i_msg_info), //
-	.o_header          (header), //
-	.o_header_valid    (header_valid), //
-	.i_tx_point_sweep_test   (i_tx_point_sweep_test), //
-	.i_tx_point_sweep_test_en(i_tx_point_sweep_test_en) //
+	.i_clk             (i_divided_clk), 
+	.i_rst_n           (i_rst_n), 
+	.i_data_valid      (data_encoder_enable), 
+	.i_msg_valid       (header_encoder_enable), 
+	.i_state           (i_state), 
+	.i_sub_state       (i_sub_state), 
+	.i_msg_no          (i_msg_no), 
+	.i_msg_info        (i_msg_info), 
+	.i_tx_point_sweep_test_en(i_tx_point_sweep_test_en), 
+	.i_tx_point_sweep_test   (i_tx_point_sweep_test), 
+	.o_header          (header), 
+	.o_header_valid    (header_valid)
 );
 
 SB_DATA_ENCODER data_encoder_dut (
-	.i_clk         (i_divided_clk), //
-	.i_rst_n       (i_rst_n), //
-	.i_data_valid  (data_encoder_enable), //
-	.i_msg_valid   (header_encoder_enable), //
-	.i_state       (i_state), //
-	.i_sub_state   (i_sub_state), //
-	.i_msg_no      (i_msg_no), //
-	.i_data_bus    (i_data_bus), //
-	.o_data_encoded(data), //
-	.o_d_valid     (d_valid), //
-	.i_tx_point_sweep_test   (i_tx_point_sweep_test), //
-	.i_tx_point_sweep_test_en(i_tx_point_sweep_test_en) //
+	.i_clk         (i_divided_clk), 
+	.i_rst_n       (i_rst_n), 
+	.i_data_valid  (data_encoder_enable), 
+	.i_msg_valid   (header_encoder_enable), 
+	.i_state       (i_state), 
+	.i_sub_state   (i_sub_state), 
+	.i_msg_no      (i_msg_no), 
+	.i_data_bus    (i_data_bus), 
+	.i_tx_point_sweep_test_en(i_tx_point_sweep_test_en),
+	.i_tx_point_sweep_test   (i_tx_point_sweep_test), 
+	.o_data_encoded(data), 
+	.o_d_valid     (d_valid)
 );
 
 SB_FSM sb_fsm_dut (
-	.i_clk                  (i_divided_clk), //
-	.i_rst_n                (i_rst_n), //
-	.i_msg_valid            (i_msg_valid), //
+	.i_clk                  (i_divided_clk), 
+	.i_rst_n                (i_rst_n), 
+	.i_msg_valid            (i_msg_valid), 
 	.i_data_valid           (i_data_valid),
-	.i_start_pattern_req    (i_start_pattern_req), //
-	.i_rx_sb_rsp_delivered  (i_rx_sb_rsp_delivered), //
-	.i_d_valid              (d_valid), //
-	.i_header_valid         (header_valid), //
-	.i_packet_valid         (packet_valid), //
-	.i_start_pattern_done   (o_start_pattern_done), //
-	.o_header_encoder_enable(header_encoder_enable), //
-	.o_data_encoder_enable  (data_encoder_enable), //
-	.o_header_frame_enable  (header_frame_enable), //
-	.o_data_frame_enable    (data_frame_enable), //
-	.o_busy                 (o_busy) //
+	.i_start_pattern_req    (i_start_pattern_req), 
+	.i_rx_sb_rsp_delivered  (i_rx_sb_rsp_delivered), 
+	.i_d_valid              (d_valid), 
+	.i_header_valid         (header_valid), 
+	.i_packet_valid         (packet_valid), 
+	.i_start_pattern_done   (o_start_pattern_done), 
+	.o_header_encoder_enable(header_encoder_enable), 
+	.o_data_encoder_enable  (data_encoder_enable), 
+	.o_header_frame_enable  (header_frame_enable), 
+	.o_data_frame_enable    (data_frame_enable), 
+	.o_busy                 (o_busy) 
 	);
 
-endmodule : SB_TX_WRAPPER
+endmodule 
