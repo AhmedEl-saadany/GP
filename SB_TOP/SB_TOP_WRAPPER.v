@@ -114,7 +114,6 @@ wire sync_sb_tx_msg_valid;
 /****************************************
 * RESET SYNCHRONIZER SIGNALS
 ****************************************/
-wire sync_sb_rst_n;
 wire sync_mb_rst_n;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////// ASSIGN/WIRE STATMENTS /////////////////////////////////////////////////////////////////////
@@ -136,7 +135,7 @@ SB_RDI_WRAPPER u_sb_rdi_wrapper (
     ------------------------------------------------------------------------------------------------------------*/
         .i_clk                  (i_rdi_clk),
         .i_clk_gated            (i_rdi_clk_gated),
-        .i_rst_n                (sync_sb_rst_n),
+        .i_rst_n                (i_rst_n),
     /*------------------------------------------------------------------------------------------------------------
      * Adapter Interface
     ------------------------------------------------------------------------------------------------------------*/
@@ -184,7 +183,7 @@ SB_MB_WRAPPER u_sb_mb_wrapper (
      * Clock and Reset
     ------------------------------------------------------------------------------------------------------------*/
         .i_clk                      (i_sb_mb_clk),
-        .i_rst_n                    (sync_sb_rst_n),
+        .i_rst_n                    (i_rst_n),
     /*------------------------------------------------------------------------------------------------------------
      * LTSM Interface
     ------------------------------------------------------------------------------------------------------------*/
@@ -254,7 +253,7 @@ SB_TX_FSM_Modelling fsm_model (
 ****************************************/
 SB_TX_FIFO tx_fifo_dut (
 	.i_clk              (i_sb_mb_clk),
-	.i_rst_n            (sync_sb_rst_n),
+	.i_rst_n            (i_rst_n),
 	.i_data_in          (i_fifo_data), 
 	.i_write_enable     (write_en), 
 	.i_read_enable      (read_enable), 
@@ -274,21 +273,21 @@ SB_TX_FIFO tx_fifo_dut (
 pulse_synchronizer SBINIT_start_pattern_req_sync_inst (
     .i_slow_clock       (i_sb_mb_clk),
     .i_fast_clock       (i_dig_clk),
-    .i_slow_rst_n       (sync_sb_rst_n),
+    .i_slow_rst_n       (i_rst_n),
     .i_fast_rst_n       (sync_mb_rst_n),
     .i_fast_pulse       (i_start_pattern_req),
     .o_slow_pulse       (sync_sb_start_pattern_req)
 );
 bit_synchronizer sb_tx_msg_valid_sync_inst (
     .i_clk      (i_sb_mb_clk),
-    .i_rst_n    (sync_sb_rst_n),
+    .i_rst_n    (i_rst_n),
     .i_data_in  (i_msg_valid),
     .o_data_out (sync_sb_tx_msg_valid)
 );
 pulse_synchronizer stop_timeout_count_sync_inst (
     .i_slow_clock       (i_sb_mb_clk),
     .i_fast_clock       (i_dig_clk),
-    .i_slow_rst_n       (sync_sb_rst_n),
+    .i_slow_rst_n       (i_rst_n),
     .i_fast_rst_n       (sync_mb_rst_n),
     .i_fast_pulse       (i_stop_cnt),
     .o_slow_pulse       (sync_sb_stop_cnt)
@@ -296,12 +295,6 @@ pulse_synchronizer stop_timeout_count_sync_inst (
 /****************************************
 * RESET SYNCHRONIZERS
 ****************************************/
-bit_synchronizer reset_synchronizer_sideband (
-    .i_clk      (i_sb_mb_clk), 
-    .i_rst_n    (i_rst_n),
-    .i_data_in  (1'b1),
-    .o_data_out (sync_sb_rst_n)
-);
 bit_synchronizer reset_synchronizer_mainband (
     .i_clk      (i_dig_clk), 
     .i_rst_n    (i_rst_n),
