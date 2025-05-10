@@ -201,7 +201,6 @@ wire      [3:0]    sub_state_MBTRAIN;
 reg      [3:0]    reg_sub_state_MBINIT;
 reg      [3:0]    reg_sub_state_MBTRAIN;
 
-wire sync_lp_linkerror;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////// INSTANTIATIONS ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -363,15 +362,7 @@ nedege_detector negedge_busy_detect (
     .i_busy                     (i_busy),
     .o_busy_negedge_detected    (falling_edge_busy)
 );
-/****************************************
-* SYNCHRONIZER
-****************************************/
-bit_synchronizer lp_linkerror_synchronizer (
-    .i_clk      (i_clk), 
-    .i_rst_n    (i_rst_n),
-    .i_data_in  (i_lp_linkerror),
-    .o_data_out (sync_lp_linkerror)
-);
+
 /////////////////////////////////////////
 //////////// Machine STATES /////////////
 /////////////////////////////////////////
@@ -397,7 +388,7 @@ assign o_mapper_demapper_en = (CS == ACTIVE);
 assign o_falling_edge_busy  = falling_edge_busy;
 assign o_ltsm_in_reset = ~|CS;
 wire trainerror_req_sampled = (&i_decoded_SB_msg & i_rx_msg_valid);
-wire trainerror_condition   = (i_time_out || trainerror_req_sampled || i_start_training_DVSEC || state_timeout || sync_lp_linkerror); // if (i_time_out) --> module iniates trainerror, if (i_decoded_SB_msg == 14) --> partner iniates trainerror, if bit [10] on DVSEC is set in any state rather than reset go to trainerror
+wire trainerror_condition   = (i_time_out || trainerror_req_sampled || i_start_training_DVSEC || state_timeout || i_lp_linkerror); // if (i_time_out) --> module iniates trainerror, if (i_decoded_SB_msg == 14) --> partner iniates trainerror, if bit [10] on DVSEC is set in any state rather than reset go to trainerror
 wire reset_state_timeout_counter  = (CS == RESET || CS == FINISH_RESET || CS == ACTIVE || CS == L1 || CS == L2 || CS == TRAINERROR || CS == TRAINERROR_HS || CS != NS); // reset the counter if state is transitioning (CS!=NS) or if we are in the stated states dont count
 wire ltsm_in_active = (CS == ACTIVE);
 ////////////////////////////////////////
@@ -560,7 +551,7 @@ always @ (*) begin
 * TRAINERROR
 *-----------------------------------------------------------------------------*/
         TRAINERROR: begin
-            if (!sync_lp_linkerror && i_SB_fifo_empty) begin // go to reset if 1) No SB packets to be transmitted 2) When lp_linkerror is low    
+            if (!i_lp_linkerror && i_SB_fifo_empty) begin // go to reset if 1) No SB packets to be transmitted 2) When lp_linkerror is low    
                 NS = RESET;
             end else begin
                 NS = TRAINERROR;
