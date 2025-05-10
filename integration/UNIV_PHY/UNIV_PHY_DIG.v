@@ -45,7 +45,6 @@ module UNIV_PHY_DIG #(parameter SER_WIDTH = 32) (
     input                       i_lp_irdy,
     input                       i_lp_valid,
     input     [511:0]           i_lp_data, // 64 bytes  lesa hat2kd mn el width               
-    input                       i_lp_retimer_crd,
     input     [3:0]             i_lp_state_req,
     input                       i_lp_linkerror,
     input                       i_lp_stallack,
@@ -54,6 +53,9 @@ module UNIV_PHY_DIG #(parameter SER_WIDTH = 32) (
     input     [31:0]            i_lp_cfg,
     input                       i_lp_cfg_vld,
     input                       i_lp_cfg_crd,
+    /*---------------------------------------------------------------*/
+    input                       i_lp_retimer_crd, // NOT USED, IGNORE
+    /*---------------------------------------------------------------*/
 /*************************************************************************
 * OUTPUTS
 *************************************************************************/
@@ -103,14 +105,11 @@ module UNIV_PHY_DIG #(parameter SER_WIDTH = 32) (
     output                      o_pl_trdy, 
     output                      o_pl_valid,
     output     [511:0]          o_pl_data, // 64B lesa hat2kd mn el WIDTH
-    output                      o_pl_retimer_crd,
     output     [3:0]            o_pl_state_sts,
     output                      o_pl_inband_pres,
     output                      o_pl_error,
-    output                      o_pl_cerror,
     output                      o_pl_nferror,
     output                      o_pl_trainerror,
-    output                      o_pl_phyinrecenter,
     output                      o_pl_stallreq,
     output     [2:0]            o_pl_speedmode,
     output     [2:0]            o_pl_lnk_cfg,
@@ -118,7 +117,12 @@ module UNIV_PHY_DIG #(parameter SER_WIDTH = 32) (
     output                      o_pl_wake_ack,
     output     [31:0]           o_pl_cfg,
     output                      o_pl_cfg_vld,
-    output                      o_pl_cfg_crd
+    output                      o_pl_cfg_crd,
+    /*------------------------------------------------------------------*/
+    output                      o_pl_retimer_crd,   // NOT USED, IGNORE
+    output                      o_pl_cerror,        // NOT USED, IGNORE
+    output                      o_pl_phyinrecenter  // NOT USED, IGNORE
+    /*------------------------------------------------------------------*/
 );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -132,6 +136,7 @@ wire rdi_gated_clk;
 wire divided_clk_100mhz;
 wire divided_clk_200mhz;
 wire sync_sb_rst_n_pll;
+wire sync_rdi_rst_n;
 /****************************************
 * MAINBAND O/Ps SIGNALS
 ****************************************/
@@ -178,6 +183,7 @@ wire [3:0] sb_msg_no;
 // outputs to ltsm
 wire rdi_start_training;
 wire rdi_go_to_phyretrain;
+wire rdi_go_to_linkerror;
 wire rdi_go_to_active;
 wire rdi_go_to_l1;
 wire rdi_go_to_l2;
@@ -186,10 +192,9 @@ wire rdi_exit_from_l2;
 wire rdi_enable_scrambler;
 wire rdi_clk_gate_en_sync;  // should be connected to o_clk_gate_en_sync from rdi
 // outputs to sideband
-wire rdi_clk_gate_en; // should be connected to o_clk_gate_en from rdi (o_clk_gate_en should have 2 versions, one for rdi clk gating and another one synchronized in dig_clk domain for dig_clk_gating)
 wire rdi_adapter_is_waked_up;
 wire rdi_msg_valid;
-wire rdi_pl_inband_pres; // synchronized to lclk domain (rdi_clk)
+wire rdi_clk_gate_en;
 wire [3:0] rdi_msg_no;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////// ASSIGN STATMENTS //////////////////////////////////////////////////////////////////////////
@@ -199,7 +204,7 @@ wire [3:0] rdi_msg_no;
 *********************************************/
 assign rdi_clk = (~|o_curret_operating_speed)? divided_clk_100mhz : divided_clk_200mhz; // this is the rdi clock mux to choose to operate rdi on wether
 // 100 MHz clock in case that mainband pll is working on 4G or 200 MHz in case that mainband pll is working at any higher speed, (Hint: ~|X is same as X == 3'b000)
-
+assign o_pl_lnk_cfg = 3'b010; // x16 lanes
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////// INSTANTIATIONS ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -269,9 +274,9 @@ LTSM_MB #(.SER_WIDTH(32)) LTSM_MB_inst (
     .i_exit_from_L1             (rdi_exit_from_l1),
     .i_exit_from_L2             (rdi_exit_from_l2),
     .i_enable_scrambler         (rdi_enable_scrambler),
-    .i_clk_gating_en            (rdi_clk_gate_en_sync), // should be connected to o_clk_gate_en_sync from rdi
+    .i_clk_gating_en            (rdi_clk_gate_en_sync), 
+    .i_lp_linkerror             (rdi_go_to_linkerror),  
     .i_lp_data                  (i_lp_data),
-    .i_lp_linkerror             (i_lp_linkerror),  // synchronized in LTSM_TOP don't worry
     .o_pl_data                  (ltsm_pl_data), 
     .o_ltsm_in_reset            (ltsm_in_reset),
     .o_pl_trainerror            (ltsm_pl_trainerror),
@@ -325,8 +330,8 @@ SB_TOP_WRAPPER SB_TOP_WRAPPER_inst (
     .i_sb_mb_clk                   (divided_clk_100mhz), // 100 MHz clock for MB Sideband 
     .i_rdi_clk                     (rdi_clk),            // 100/200 MHz clock for RDI Sideband
     .i_rdi_clk_gated               (rdi_gated_clk),      // same as above but gated for RDI Sideband encoder
-    .i_dig_clk                     (dig_clk),            // used for synchronizing ltsm inputs from the pov of sideband
-    .i_rst_n                       (i_rst_n),
+    .i_dig_clk                     (ltsm_dig_clk),       // used for synchronizing ltsm inputs from the pov of sideband
+    .i_rst_n                       (sync_rdi_rst_n),
     .i_rst_n_pll                   (sync_sb_rst_n_pll),
     /*------------------------------------------------------------------------------------------------------------
      * Adapter Interface
@@ -345,7 +350,7 @@ SB_TOP_WRAPPER SB_TOP_WRAPPER_inst (
     .i_clk_is_ungated              (rdi_clk_gate_en), // should be connected to o_clk_gate_en from rdi
     .i_msg_no_rdi                  (rdi_msg_no),
     .i_msg_valid_rdi               (rdi_msg_valid),
-    .i_pl_inband_pres              (rdi_pl_inband_pres),
+    .i_pl_inband_pres              (o_pl_inband_pres),
     .o_wake_adapter                (sb_wake_adapter),
     .o_msg_done_rdi                (sb_msg_done),
     .o_msg_valid_rdi               (sb_msg_valid),
@@ -394,6 +399,66 @@ SB_TOP_WRAPPER SB_TOP_WRAPPER_inst (
 /*********************************************
 * RDI TOP
 *********************************************/
+RDI_TOP  #(.NBYTES(64*8)) RDI_TOP_inst (
+    .lclk                                   (rdi_clk),                              
+    .sys_rst                                (sync_rdi_rst_n),                       
+    .clk_ltsm                               (ltsm_dig_clk),                         
+    .o_clk_for_rdi_controller               (rdi_gated_clk),    
+    /*------------------------------------------------------------------------------------------------------------
+     * LTSM Interface
+    ------------------------------------------------------------------------------------------------------------*/
+    .i_reset_only_from_ltsm                 (ltsm_in_reset),                        
+    .i_pl_error_from_ltsm                   (ltsm_pl_error),                        
+    .i_pl_inband_pres_from_ltsm             (ltsm_pl_inband_pres),                  
+    .i_pl_train_error_from_ltsm             (ltsm_pl_trainerror),                   
+    .i_pl_link_speed_from_ltsm              (o_curret_operating_speed),             
+    .o_go_to_l1_from_rdi_to_ltsm_sync       (rdi_go_to_l1),                         
+    .o_go_to_l2_from_rdi_to_ltsm_sync       (rdi_go_to_l2),                         
+    .o_go_to_active_from_rdi_to_ltsm_sync   (rdi_go_to_active),                     
+    .o_go_to_training_from_rdi_to_ltsm_sync (rdi_start_training),                   
+    .o_go_to_linkerror_from_rdi_to_ltsm_sync(rdi_go_to_linkerror),                 
+    .o_go_to_retrain_from_rdi_to_ltsm_sync  (rdi_go_to_phyretrain),                 
+    .o_exit_from_l1_sync                    (rdi_exit_from_l1),                     
+    .o_reset_counter_signal                 (rdi_exit_from_l2),                     
+    .o_clk_gate_en_sync                     (rdi_clk_gate_en_sync),                 
+    /*------------------------------------------------------------------------------------------------------------
+     * Adapter Interface ///////////////////// AYMAN: zabt el data flow signals lp_data/pl_data interconnections between rdi and ltsm and adapter  ////////////
+    ------------------------------------------------------------------------------------------------------------*/
+    .i_lp_state_req                         (i_lp_state_req),
+    .i_lp_wake_req                          (i_lp_wake_req),
+    .i_lp_stallack                          (i_lp_stallack),
+    .i_lp_linkerror                         (i_lp_linkerror),
+    .i_lp_clk_ack                           (i_lp_clk_ack),
+    .i_lp_irdy                              (i_lp_irdy),
+    .i_lp_valid                             (i_lp_valid),
+    .i_lp_data                              (i_lp_data),
+    .o_pl_wake_ack                          (o_pl_wake_ack),
+    .o_pl_clk_req                           (o_pl_clk_req),
+    .o_pl_stallreq                          (o_pl_stallreq),
+    .o_pl_trdy                              (o_pl_trdy),
+    .o_pl_valid                             (o_pl_valid),
+    .o_pl_data                              (o_pl_data),
+    .o_pl_error                             (o_pl_error),
+    .o_pl_train_error                       (o_pl_trainerror),
+    .o_pl_speed_mode                        (o_pl_speedmode),
+    .o_pl_state_sts                         (o_pl_state_sts),
+    .o_pl_inband_pres                       (o_pl_inband_pres),
+    /*------------------------------------------------------------------------------------------------------------
+     * Sideband Interface
+    ------------------------------------------------------------------------------------------------------------*/
+    .i_rx_sb_message                        (sb_msg_no),
+    .i_rx_msg_valid                         (sb_msg_valid),
+    .i_rx_done_send_message                 (sb_msg_done),
+    .i_wake_adapter                         (sb_wake_adapter),
+    .o_tx_sb_message                        (rdi_msg_no),
+    .o_tx_msg_valid                         (rdi_msg_valid),
+    .o_clk_done_hand_shake                  (rdi_adapter_is_waked_up),
+    .o_clk_gate_en                          (rdi_clk_gate_en), ///////////////////// AYMAN: Tal3 el signal di zy mhya b esmha kdh o_clk_gate_en ////////////
+    /*------------------------------------------------------------------------------------------------------------
+     * Others
+    ------------------------------------------------------------------------------------------------------------*/
+    .i_reset_pin_or_soft_ware_clear_error (reset_pin_or_clear_error)
+);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -413,14 +478,6 @@ Clock_Divider_by_4 rdi_clk_div_inst (
     .o_divided_clk  (divided_clk_200mhz)
 );
 /****************************************
-* CLOCK GATER 
-****************************************/
-CLK_GATING clock_gating_inst (
-    .CLK        (rdi_clk),
-    .EN         (rdi_clk_gate_en),
-    .GATED_CLK  (rdi_gated_clk)
-);
-/****************************************
 * RESET SYNCHRONIZERS
 ****************************************/
 bit_synchronizer reset_synchronizer_sideband_pll (
@@ -428,6 +485,12 @@ bit_synchronizer reset_synchronizer_sideband_pll (
     .i_rst_n    (i_rst_n),
     .i_data_in  (1'b1),
     .o_data_out (sync_sb_rst_n_pll)
+);
+bit_synchronizer reset_synchronizer_rdi (
+    .i_clk      (divided_clk_100mhz), 
+    .i_rst_n    (i_rst_n),
+    .i_data_in  (1'b1),
+    .o_data_out (sync_rdi_rst_n)
 );
 
 
